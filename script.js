@@ -1,21 +1,20 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-//$(document).ready(){}<---to meet first criteria, missing function
-    $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
 
-  $(".time-block").click(fucntion() {
-    $(this).localStorage.setItem('time-block');
-  })
+//Ensures code isn't run until browser has finished rendered, missing rest of code aka function
+//$(document).ready(){}
+   
+$(function () {
+  // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener function? How can DOM traversal be used to get the "hour-x" id of the time-block containing the button that was clicked? How might the id be useful when saving the description in local storage?
 
+  var saveBtn = $(".saveBtn");
 
-  //
+  saveBtn.on("click", function (event){
+    event.preventDefault();
+    var timeBlock = $(this).siblings(".time-block").val();
+    var hour = $(this).parent().attr("id");
+    localStorage.setItem("time-block", hour);
+  });
+    
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -26,14 +25,12 @@
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-});
-//go through a class list to grab all elements
-//if something is going to be changing then use the JavaScript, otherwise do not!
-//in this case do NOT use JavaScript 
-const divs = $(".row")
-cont btns = $(".btn");
 
-for (var i = 0; i <btns.length; i++){
-  btns
-}
+//Adds current date to page
+var today = dayjs();
+$("#currentDay").text(today.format("[Today is] dddd, MMMM D, YYYY"));
+console.log(today);
+
+});
+
+
