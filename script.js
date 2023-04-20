@@ -5,7 +5,7 @@
 $(function () {
  
   //To compare current time vs time block
-  var currentHour = dayjs().hour();
+  
 
   //saves to local storage using event listener
   var saveBtn = $(".saveBtn");
@@ -21,23 +21,33 @@ $(function () {
 
   // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour. HINTS: How can the id attribute of each time-block be used to conditionally add or remove the past, present, and future classes? How can Day.js be used to get the urrent hour in 24-hour time?
 
-  var rowTimeBlock = $(this).siblings(".time-block");
+ // var $(this) = $(this).siblings(".time-block");
+ // console.log(this);
 
-  rowTimeBlock.on("click", function(){
-    if(rowTimeBlock === currentHour){
-      rowTimeBlock.setAttribute(".present");
-      }else if (rowTimeBlock >= currentHour){
-        rowTimeBlock.setAttribute(".future");
-      }else if(rowTimeBlock <= currentHour){
-        rowTimeBlock.setAttribute(".past");
+function updateTime(){
+  var currentHour = dayjs().hour();
+
+
+
+  $(".time-block").each(function () {
+    var rowTimeBlock = parseInt($(this).attr("id").split("-")[1])
+    if(rowTimeBlock < currentHour){
+      $(this).addClass("past");
+      }else if (rowTimeBlock === currentHour){
+        $(this).removeClass("past");
+        $(this).addClass("present");
+      }else{
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+        $(this).addClass("future"); 
       }
-     }
-    
-  )});
-
+  })
+}
+updateTime();
   
 
-  //
+  //create a function with a variable with the current time
+  //that will give me current time
 
   
 
@@ -53,6 +63,6 @@ var today = dayjs();
 $("#currentDay").text(today.format("[Today is] dddd, MMMM D, YYYY"));
 console.log(today);
 
-;
+})
 
 //});
