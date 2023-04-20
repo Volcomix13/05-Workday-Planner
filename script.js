@@ -1,28 +1,26 @@
 
 //Ensures code isn't run until browser has finished rendered, missing rest of code aka function
-//$(document).ready({
+$(document).ready(
    
-$(function () {
+function () {
  
-  //To compare current time vs time block
   
 
   //saves to local storage using event listener
-  var saveBtn = $(".saveBtn");
 
-  saveBtn.on("click", function (event){
-    event.preventDefault();
-    var timeBlock = $(this).siblings(".time-block").val();
-    var hour = $(this).parent().attr("id");
-    localStorage.setItem(timeBlock, hour);
-  });
+  $(".saveBtn").on("click", function (){
+      //event.preventDefault();
+      var timeBlock = $(this).siblings(".description").val();
+      console.log(timeBlock);
+      var hour = $(this).parent().attr("id");
+      localStorage.setItem(hour, timeBlock);
+    });
+  
   
 
 
-  // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour. HINTS: How can the id attribute of each time-block be used to conditionally add or remove the past, present, and future classes? How can Day.js be used to get the urrent hour in 24-hour time?
+//adds styling corresponding to each hour
 
- // var $(this) = $(this).siblings(".time-block");
- // console.log(this);
 
 function updateTime(){
   var currentHour = dayjs().hour();
@@ -46,17 +44,13 @@ function updateTime(){
 updateTime();
   
 
-  //create a function with a variable with the current time
-  //that will give me current time
+ //gets user input from localStorage
+for(var i=8; i<16; i++){
+var k = i.toString()
+  var text =localStorage.getItem("hour-"+k);
+$('#hour-' +k +' .description').val(text)
+}
 
-  
-
-
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
 
 //Adds current date to page
 var today = dayjs();
@@ -64,5 +58,3 @@ $("#currentDay").text(today.format("[Today is] dddd, MMMM D, YYYY"));
 console.log(today);
 
 })
-
-//});
