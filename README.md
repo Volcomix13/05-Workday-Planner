@@ -10,7 +10,7 @@ It is also a great webpage to schedule your work day.
 No Installation needed. Simply type in the URL below in your preferred browser to start scheduling your workday!
 
 ## Usage
- 1. Visit URL provided
+ 1. Visit URL provided: https://volcomix13.github.io/05-Workday-Planner/    
  2. Add your appointment or item to the appropriate time slot
  3. Click the floppy disk image to save input
  4. Time slots should be color coded depending on if the time slot is in the past, present or future.
@@ -20,7 +20,7 @@ No Installation needed. Simply type in the URL below in your preferred browser t
  ![Time Blocks](Assets/Time-Blocks.png)
 
 ## Credits
-    -TA Jack : Helped create and debug time-block conditional statement
+    -TA Jack Goers: Helped create and debug time-block conditional statement
     -Tutor Jili Jiang: Helped debug code and create getItem code
 
 ## License
